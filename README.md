@@ -1,6 +1,6 @@
 # Logos, custom themes & tutorials
 
-On this repo you can find the custom logos, themes and other assets created for the [Mastodon.Coffee](https://mastodon.coffe/) instance.
+On this repo you can find the custom logos, themes and other assets created for the [Mastodon.Coffee](https://mastodon.coffee/) instance.
 
 ## Instructions for admins
 Download the custom themes you want from the /styles folder and add them to your Mastodon installation.
