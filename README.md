@@ -15,7 +15,7 @@ Let's use the Modern Dark theme as an example.
 app/
   javascript/
     styles/
-    moder-dark.scss                             | **new**
+    modern-dark.scss                             | **new**
       contrast/
         ...
       fonts/
