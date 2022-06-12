@@ -8,6 +8,11 @@
   --shadow-low: 0 8px 16px -10px rgba(0,0,0,0.4);
   --shadow-med: 0 8px 60px -30px rgba(0,0,0,0.1);
 }
+.rtl textarea,
+.rtl p {
+  text-align: right;
+  direction: rtl;
+}
 #mastodon .button--block,
 .public-layout .button--block {
   font-weight: 700;
@@ -170,11 +175,16 @@
 #mastodon .search input,
 .public-layout .search input {
   border-radius: var(--radius-round) !important;
-  padding-left: 20px;
+  padding-inline-start: 20px !important;
+  padding-inline-end: 40px !important;
 }
 #mastodon .search .search__icon > i,
 .public-layout .search .search__icon > i {
-  right: 15px;
+  margin-inline: 5px;
+}
+#mastodon .compose-form .reply-indicator__display-name,
+.public-layout .compose-form .reply-indicator__display-name {
+  padding: 0;
 }
 #mastodon .compose-form .compose-form__autosuggest-wrapper,
 .public-layout .compose-form .compose-form__autosuggest-wrapper,
@@ -441,7 +451,7 @@
 .public-layout .account__header__fields.account__header__account-note.account__header__account-note dd:not(.verified),
 #mastodon .account__header__account-note.account__header__account-note.account__header__account-note dd:not(.verified),
 .public-layout .account__header__account-note.account__header__account-note.account__header__account-note dd:not(.verified) {
-  padding-left: 0;
+  padding-inline-start: 0;
 }
 #mastodon .account__header__fields.account__header__account-note,
 .public-layout .account__header__fields.account__header__account-note,
@@ -582,9 +592,9 @@
 }
 #mastodon .status,
 .public-layout .status {
-  --status-left-padding: 78px;
   overflow: visible !important;
-  padding: 15px 15px 15px var(--status-left-padding) !important;
+  padding: 15px !important;
+  padding-inline-start: 78px !important;
 }
 #mastodon .status__prepend,
 .public-layout .status__prepend,
@@ -592,6 +602,7 @@
 .public-layout .notification__message {
   padding-top: 15px !important;
   padding-bottom: 0 !important;
+  margin-inline-start: 78px;
   margin-bottom: -10px !important;
   z-index: 2;
 }
@@ -616,6 +627,7 @@
 .public-layout .status__info .status__avatar {
   top: 15px;
   left: 15px !important;
+  right: 15px;
   z-index: 2;
 }
 #mastodon .status__info .display-name strong,
@@ -628,10 +640,15 @@
   padding-top: 2px;
   margin-inline: -100px;
   padding-inline: 100px;
+  text-align: unset !important;
 }
 #mastodon .status__content.status__content--with-spoiler > p:first-child,
 .public-layout .status__content.status__content--with-spoiler > p:first-child {
   margin-bottom: 0;
+}
+.rtl #mastodon .status__content,
+.rtl .public-layout .status__content {
+  text-align: right !important;
 }
 #mastodon .status__content__spoiler-link,
 .public-layout .status__content__spoiler-link {
@@ -641,10 +658,10 @@
   color: inherit;
   font-weight: 700;
   background: none;
-  margin-left: -100px !important;
-  padding-left: 100px !important;
+  margin-inline-start: -100px !important;
+  padding-inline-start: 100px !important;
   width: calc(100% + 150px);
-  text-align: left;
+  text-align: unset;
   font-size: 0.8em;
 }
 #mastodon .status__content__spoiler-link:hover,
@@ -663,7 +680,7 @@
 .public-layout .status-card,
 #mastodon .audio-player,
 .public-layout .audio-player {
-  margin-left: calc(15px - var(--status-left-padding));
+  margin-inline-start: -63px;
   width: unset !important;
   box-shadow: var(--shadow-low);
   border-radius: var(--radius);
@@ -671,6 +688,7 @@
   animation: scaleIn 0.4s;
   max-width: unset !important;
   max-height: 80vh !important;
+  direction: unset;
 }
 #mastodon .media-gallery.status-card,
 .public-layout .media-gallery.status-card,
@@ -751,8 +769,20 @@
 #mastodon .detailed-status .status-card.horizontal.interactive,
 .public-layout .detailed-status .status-card.horizontal.interactive,
 #mastodon .picture-in-picture .status-card.horizontal.interactive,
-.public-layout .picture-in-picture .status-card.horizontal.interactive {
-  margin-left: 0 !important;
+.public-layout .picture-in-picture .status-card.horizontal.interactive,
+#mastodon .detailed-status__wrapper .status-card,
+.public-layout .detailed-status__wrapper .status-card,
+#mastodon .detailed-status .status-card,
+.public-layout .detailed-status .status-card,
+#mastodon .picture-in-picture .status-card,
+.public-layout .picture-in-picture .status-card,
+#mastodon .detailed-status__wrapper .audio-player,
+.public-layout .detailed-status__wrapper .audio-player,
+#mastodon .detailed-status .audio-player,
+.public-layout .detailed-status .audio-player,
+#mastodon .picture-in-picture .audio-player,
+.public-layout .picture-in-picture .audio-player {
+  margin-inline: 0 !important;
   max-height: unset !important;
 }
 #mastodon .detailed-status__wrapper .status__content,
@@ -767,8 +797,16 @@
 .public-layout .picture-in-picture .picture-in-picture__header {
   border-radius: var(--radius) var(--radius) 0 0;
 }
+#mastodon .picture-in-picture .media-gallery,
+.public-layout .picture-in-picture .media-gallery,
 #mastodon .picture-in-picture .video-player,
-.public-layout .picture-in-picture .video-player {
+.public-layout .picture-in-picture .video-player,
+#mastodon .picture-in-picture .status-card.horizontal.interactive,
+.public-layout .picture-in-picture .status-card.horizontal.interactive,
+#mastodon .picture-in-picture .status-card,
+.public-layout .picture-in-picture .status-card,
+#mastodon .picture-in-picture .audio-player,
+.public-layout .picture-in-picture .audio-player {
   margin: 0 !important;
   border-radius: 0 !important;
 }
@@ -797,7 +835,7 @@
 .public-layout .detailed-status__action-bar .icon-button:last-child,
 #mastodon .picture-in-picture__footer .icon-button:last-child,
 .public-layout .picture-in-picture__footer .icon-button:last-child {
-  margin-right: 0 !important;
+  margin: 0 !important;
 }
 #mastodon .status__action-bar .icon-button[aria-label]::after,
 .public-layout .status__action-bar .icon-button[aria-label]::after,
@@ -807,7 +845,7 @@
 .public-layout .picture-in-picture__footer .icon-button[aria-label]::after {
   content: attr(aria-label);
   font-size: 0.7em;
-  margin-left: 0.5em;
+  margin-inline-start: 0.5em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -874,7 +912,7 @@
 .public-layout .tabs-bar__wrapper,
 #mastodon .column-back-button--slim .column-back-button,
 .public-layout .column-back-button--slim .column-back-button {
-  transition: margin-left 0.2s cubic-bezier(0, 0, 0, 1.1);
+  transition: margin 0.2s cubic-bezier(0, 0, 0, 1.1);
 }
 .column-header {
   font-weight: 600;
@@ -895,7 +933,7 @@
   .public-layout .column-back-button--slim .column-back-button {
     position: fixed;
     width: 285px;
-    margin-left: 600px;
+    margin-inline-start: 600px;
     top: 0 !important;
     left: unset !important;
     right: unset !important;
@@ -920,6 +958,27 @@
   #mastodon .column-back-button--slim .column-back-button .column-header__buttons button,
   .public-layout .column-back-button--slim .column-back-button .column-header__buttons button {
     background: none !important;
+  }
+  #mastodon .tabs-bar__wrapper .announcements,
+  .public-layout .tabs-bar__wrapper .announcements,
+  #mastodon .column-back-button--slim .column-back-button .announcements,
+  .public-layout .column-back-button--slim .column-back-button .announcements {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+  #mastodon .tabs-bar__wrapper .announcements__container,
+  .public-layout .tabs-bar__wrapper .announcements__container,
+  #mastodon .column-back-button--slim .column-back-button .announcements__container,
+  .public-layout .column-back-button--slim .column-back-button .announcements__container {
+    width: 100% !important;
+  }
+  #mastodon .tabs-bar__wrapper .announcements__mastodon,
+  .public-layout .tabs-bar__wrapper .announcements__mastodon,
+  #mastodon .column-back-button--slim .column-back-button .announcements__mastodon,
+  .public-layout .column-back-button--slim .column-back-button .announcements__mastodon {
+    margin-inline-start: 10px;
+    z-index: -1;
+    position: relative;
   }
 }
 @media (min-width: 895px) and (max-width: 1191px) {
@@ -978,7 +1037,7 @@
   .public-layout .tabs-bar__wrapper,
   #mastodon .column-back-button--slim .column-back-button,
   .public-layout .column-back-button--slim .column-back-button {
-    margin-left: calc(var(--tl-width) - 5px);
+    margin-inline-start: calc(var(--tl-width) - 5px);
   }
 }
 #mastodon .navigation-panel,
@@ -1004,7 +1063,7 @@
 #mastodon .column-link .column-link__icon,
 .public-layout .column-link .column-link__icon,
 .column-header__icon {
-  margin-right: 1em !important;
+  margin-inline-end: 1em !important;
 }
 #mastodon .column-link::before,
 .public-layout .column-link::before {
@@ -1123,6 +1182,10 @@
   background-position: left;
   border-radius: 0 !important;
 }
+.rtl #mastodon .getting-started .getting-started__wrapper .account__avatar,
+.rtl .public-layout .getting-started .getting-started__wrapper .account__avatar {
+  background-position: right !important;
+}
 #mastodon .getting-started .getting-started__wrapper .account__avatar::before,
 .public-layout .getting-started .getting-started__wrapper .account__avatar::before {
   content: "";
@@ -1136,6 +1199,10 @@
   transform: translate(-40%, -20%);
   filter: blur(100px);
   opacity: 0.2;
+}
+.rtl #mastodon .getting-started .getting-started__wrapper .account__avatar::before,
+.rtl .public-layout .getting-started .getting-started__wrapper .account__avatar::before {
+  transform: translate(40%, -20%);
 }
 #mastodon .getting-started .getting-started__wrapper > *,
 .public-layout .getting-started .getting-started__wrapper > * {
@@ -1238,7 +1305,7 @@
     box-sizing: border-box;
     overflow-x: scroll !important;
     scroll-snap-type: x mandatory;
-    scroll-padding-left: 30px;
+    scroll-padding-inline-start: 30px;
     gap: 20px 30px;
     position: relative;
     background: none !important;
@@ -1272,7 +1339,7 @@
   }
   #mastodon.public-layout .table-of-contents > li:last-child,
   .public-layout.public-layout .table-of-contents > li:last-child {
-    margin-right: 70%;
+    margin-inline-end: 70%;
   }
 }
 #mastodon.public-layout .account-card,
@@ -1430,7 +1497,6 @@
   }
   #mastodon .status,
   .public-layout .status {
-    --status-left-padding: 70px !important;
     padding-top: 14px !important;
   }
   #mastodon .status .status__avatar,
@@ -1451,7 +1517,11 @@
   #mastodon .status .video-player,
   .public-layout .status .video-player,
   #mastodon .status .status-card.horizontal.interactive,
-  .public-layout .status .status-card.horizontal.interactive {
+  .public-layout .status .status-card.horizontal.interactive,
+  #mastodon .status .status-card,
+  .public-layout .status .status-card,
+  #mastodon .status .audio-player,
+  .public-layout .status .audio-player {
     margin-bottom: 0 !important;
   }
   #mastodon .tabs-bar__wrapper,
@@ -1484,9 +1554,14 @@
     padding-inline: 5px;
     box-shadow: 0 0 24px rgba(0,0,0,0.1);
   }
+  .rtl #mastodon .tabs-bar__wrapper .tabs-bar,
+  .rtl .public-layout .tabs-bar__wrapper .tabs-bar {
+    flex-direction: row-reverse;
+  }
   #mastodon .tabs-bar__wrapper .tabs-bar a,
   .public-layout .tabs-bar__wrapper .tabs-bar a {
     flex-grow: 1 !important;
+    flex-basis: unset !important;
     padding-block: 20px;
     position: relative;
     border: 0;
@@ -1514,8 +1589,8 @@
     border-radius: 100px;
     background-color: currentColor;
     left: 50%;
-    margin-left: -2.5px;
-    transition: bottom 0.2s cubic-bezier(0, 0, 0, 4), width 0.2s, margin-left 0.2s;
+    margin-inline-start: -2.5px;
+    transition: bottom 0.2s cubic-bezier(0, 0, 0, 4), width 0.2s, margin 0.2s;
   }
   #mastodon .tabs-bar__wrapper .tabs-bar a:active,
   .public-layout .tabs-bar__wrapper .tabs-bar a:active {
@@ -1539,6 +1614,7 @@
   #mastodon .tabs-bar__wrapper #tabs-bar__portal,
   .public-layout .tabs-bar__wrapper #tabs-bar__portal {
     margin: 10px 20px !important;
+    margin-right: auto !important;
     width: max-content !important;
     box-shadow: var(--shadow) !important;
     max-width: calc(100vw - 130px);
@@ -1556,7 +1632,7 @@
   }
   #mastodon .tabs-bar__wrapper #tabs-bar__portal .column-header > button,
   .public-layout .tabs-bar__wrapper #tabs-bar__portal .column-header > button {
-    padding-right: 15px;
+    padding-inline-start: 15px;
     transform-origin: center !important;
   }
   #mastodon .tabs-bar__wrapper #tabs-bar__portal .column-header,
@@ -1581,7 +1657,7 @@
   }
   #mastodon .status__action-bar,
   .public-layout .status__action-bar {
-    margin-left: -63px;
+    margin-inline-start: -63px;
     margin-bottom: -10px;
   }
   #mastodon .status__action-bar .icon-button,
@@ -1594,7 +1670,7 @@
   #mastodon .modal-root__modal .status.light,
   .public-layout .modal-root__modal .status.light {
     overflow: hidden !important;
-    padding-left: 70px !important;
+    padding-inline-start: 70px !important;
   }
   #mastodon .getting-started,
   .public-layout .getting-started {
@@ -1667,18 +1743,18 @@
   border: 0 !important;
   padding: 0 !important;
 }
-.layout-multiple-columns #mastodon .columns-area > div:not(:last-child):not(.drawer) {
-  padding-right: 2px !important;
+.layout-multiple-columns #mastodon .columns-area > div:not(.drawer):not(:last-child) {
+  padding-inline-end: 2px !important;
 }
 .layout-multiple-columns #mastodon .columns-area > div.column {
   flex-grow: 1;
   max-width: 600px;
 }
 .layout-multiple-columns #mastodon .columns-area > div:first-child {
-  margin-left: auto !important;
+  margin-inline-start: auto !important;
 }
 .layout-multiple-columns #mastodon .columns-area > div:last-child {
-  margin-right: auto !important;
+  margin-inline-end: auto !important;
 }
 .layout-multiple-columns #mastodon .columns-area .drawer {
   padding-inline: 10px !important;
@@ -1694,10 +1770,10 @@
   border: 0;
 }
 .layout-multiple-columns #mastodon .columns-area .drawer .drawer__header a:first-child {
-  padding-left: 15px !important;
+  padding-inline-start: 15px !important;
 }
 .layout-multiple-columns #mastodon .columns-area .drawer .drawer__header a:last-child {
-  padding-right: 15px !important;
+  padding-inline-end: 15px !important;
 }
 .layout-multiple-columns #mastodon .columns-area .drawer__inner:not(.darker),
 .layout-multiple-columns #mastodon .columns-area .drawer__inner__mastodon {
